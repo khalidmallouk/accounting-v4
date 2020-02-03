@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperationSaisieViewDlg" widgetVar="OperationSaisieViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOperationSaisieTitle}">
+            <h:form id="OperationSaisieViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operationSaisieController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_id}"/>
+                        <h:outputText value="#{operationSaisieController.selected.id}" title="#{bundle.ViewOperationSaisieTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_societe}"/>
+                        <h:outputText value="#{operationSaisieController.selected.societe}" title="#{bundle.ViewOperationSaisieTitle_societe}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_typeJournal}"/>
+                        <h:outputText value="#{operationSaisieController.selected.typeJournal}" title="#{bundle.ViewOperationSaisieTitle_typeJournal}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_numeroEnregistrement}"/>
+                        <h:outputText value="#{operationSaisieController.selected.numeroEnregistrement}" title="#{bundle.ViewOperationSaisieTitle_numeroEnregistrement}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_numeroFacture}"/>
+                        <h:outputText value="#{operationSaisieController.selected.numeroFacture}" title="#{bundle.ViewOperationSaisieTitle_numeroFacture}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_compteComptable}"/>
+                        <h:outputText value="#{operationSaisieController.selected.compteComptable}" title="#{bundle.ViewOperationSaisieTitle_compteComptable}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_libelle}"/>
+                        <h:outputText value="#{operationSaisieController.selected.libelle}" title="#{bundle.ViewOperationSaisieTitle_libelle}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_dateOperation}"/>
+                        <h:outputText value="#{operationSaisieController.selected.dateOperation}" title="#{bundle.ViewOperationSaisieTitle_dateOperation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_montant}"/>
+                        <h:outputText value="#{operationSaisieController.selected.montant}" title="#{bundle.ViewOperationSaisieTitle_montant}"/>
+                        <h:outputText value="#{bundle.ViewOperationSaisieLabel_typeOperationSaisie}"/>
+                        <h:outputText value="#{operationSaisieController.selected.typeOperationSaisie}" title="#{bundle.ViewOperationSaisieTitle_typeOperationSaisie}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OperationSaisieViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

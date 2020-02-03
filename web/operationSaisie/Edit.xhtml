@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperationSaisieEditDlg" widgetVar="OperationSaisieEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOperationSaisieTitle}">
+            <h:form id="OperationSaisieEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operationSaisieController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{operationSaisieController.selected.id}" title="#{bundle.EditOperationSaisieTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_societe}" for="societe" />
+                        <p:selectOneMenu id="societe" value="#{operationSaisieController.selected.societe}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{societeController.itemsAvailableSelectOne}"
+                                           var="societeItem"
+                                           itemValue="#{societeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_typeJournal}" for="typeJournal" />
+                        <p:selectOneMenu id="typeJournal" value="#{operationSaisieController.selected.typeJournal}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeJournalController.itemsAvailableSelectOne}"
+                                           var="typeJournalItem"
+                                           itemValue="#{typeJournalItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_numeroEnregistrement}" for="numeroEnregistrement" />
+                        <p:inputText id="numeroEnregistrement" value="#{operationSaisieController.selected.numeroEnregistrement}" title="#{bundle.EditOperationSaisieTitle_numeroEnregistrement}" />
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_numeroFacture}" for="numeroFacture" />
+                        <p:inputText id="numeroFacture" value="#{operationSaisieController.selected.numeroFacture}" title="#{bundle.EditOperationSaisieTitle_numeroFacture}" />
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_compteComptable}" for="compteComptable" />
+                        <p:selectOneMenu id="compteComptable" value="#{operationSaisieController.selected.compteComptable}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{compteComptableController.itemsAvailableSelectOne}"
+                                           var="compteComptableItem"
+                                           itemValue="#{compteComptableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{operationSaisieController.selected.libelle}" title="#{bundle.EditOperationSaisieTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_dateOperation}" for="dateOperation" />
+                        <p:calendar id="dateOperation" pattern="MM/dd/yyyy HH:mm:ss" value="#{operationSaisieController.selected.dateOperation}" title="#{bundle.EditOperationSaisieTitle_dateOperation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{operationSaisieController.selected.montant}" title="#{bundle.EditOperationSaisieTitle_montant}" />
+                        <p:outputLabel value="#{bundle.EditOperationSaisieLabel_typeOperationSaisie}" for="typeOperationSaisie" />
+                        <p:selectOneMenu id="typeOperationSaisie" value="#{operationSaisieController.selected.typeOperationSaisie}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeOperationSaisieController.itemsAvailableSelectOne}"
+                                           var="typeOperationSaisieItem"
+                                           itemValue="#{typeOperationSaisieItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operationSaisieController.update}" value="#{bundle.Save}" update="display,:OperationSaisieListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OperationSaisieEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperationSaisieEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

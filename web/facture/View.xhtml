@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureViewDlg" widgetVar="FactureViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFactureTitle}">
+            <h:form id="FactureViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factureController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFactureLabel_reference}"/>
+                        <h:outputText value="#{factureController.selected.reference}" title="#{bundle.ViewFactureTitle_reference}"/>
+                        <h:outputText value="#{bundle.ViewFactureLabel_tva}"/>
+                        <h:outputText value="#{factureController.selected.tva}" title="#{bundle.ViewFactureTitle_tva}"/>
+                        <h:outputText value="#{bundle.ViewFactureLabel_montantHt}"/>
+                        <h:outputText value="#{factureController.selected.montantHt}" title="#{bundle.ViewFactureTitle_montantHt}"/>
+                        <h:outputText value="#{bundle.ViewFactureLabel_montantTtc}"/>
+                        <h:outputText value="#{factureController.selected.montantTtc}" title="#{bundle.ViewFactureTitle_montantTtc}"/>
+                        <h:outputText value="#{bundle.ViewFactureLabel_societe}"/>
+                        <h:outputText value="#{factureController.selected.societe}" title="#{bundle.ViewFactureTitle_societe}"/>
+                        <h:outputText value="#{bundle.ViewFactureLabel_id}"/>
+                        <h:outputText value="#{factureController.selected.id}" title="#{bundle.ViewFactureTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FactureViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

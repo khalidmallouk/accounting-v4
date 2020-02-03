@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TvaViewDlg" widgetVar="TvaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTvaTitle}">
+            <h:form id="TvaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tvaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTvaLabel_libelle}"/>
+                        <h:outputText value="#{tvaController.selected.libelle}" title="#{bundle.ViewTvaTitle_libelle}"/>
+                        <h:outputText value="#{bundle.ViewTvaLabel_valeur}"/>
+                        <h:outputText value="#{tvaController.selected.valeur}" title="#{bundle.ViewTvaTitle_valeur}"/>
+                        <h:outputText value="#{bundle.ViewTvaLabel_id}"/>
+                        <h:outputText value="#{tvaController.selected.id}" title="#{bundle.ViewTvaTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TvaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
